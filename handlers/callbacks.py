@@ -1,19 +1,44 @@
 from pyrogram import filters
-from bot.utils.ui import main_menu, back
+from pyrogram.types import CallbackQuery
+from bot.main import app
 
-def register(app):
+DOWNLOAD_READY = """
+📥 Download Ready!
 
-    @app.on_callback_query()
-    async def cb(_, q):
-        data = q.data
+Ready to boom ! 😄  
+Bhejo link, download kar dunga! 🚀
 
-        if data == "main_menu":
-            await q.message.edit_text("Main Menu", reply_markup=main_menu())
+✅ Supported link formats
+• Links containing /s/
+• Links containing ?surl=
 
-        elif data == "plan_menu":
-            await q.message.edit_text("Free Plan", reply_markup=back())
+👇 Bas apna diskwala link paste karo!
+"""
 
-        elif data.startswith("quality_"):
-            await q.message.edit_text("Starting download...", reply_markup=back())
 
-        await q.answer()
+@app.on_callback_query()
+async def callbacks(client, query: CallbackQuery):
+    data = query.data
+
+    if data == "download_status":
+        await query.message.edit_text(DOWNLOAD_READY)
+
+    elif data == "plan_menu":
+        await query.message.edit_text("🚀 Your Plan: FREE")
+
+    elif data == "my_queue":
+        await query.message.edit_text("📋 Your queue is empty.")
+
+    elif data == "share_bot":
+        await query.message.edit_text("🤝 Share this bot!")
+
+    elif data == "premium_menu":
+        await query.message.edit_text("💎 Premium coming soon!")
+
+    elif data == "about_menu":
+        await query.message.edit_text("ℹ️ Diskwala Downloader Bot")
+
+    elif data == "help_menu":
+        await query.message.edit_text("❓ Send link to download.")
+
+    await query.answer()
