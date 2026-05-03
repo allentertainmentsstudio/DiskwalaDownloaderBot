@@ -1,0 +1,8 @@
+import re
+
+async def extract(url):
+    if "diskwala.com" not in url:
+        return None, "invalid"
+
+    # placeholder logic (real depends on site)
+    return None, "protected"
