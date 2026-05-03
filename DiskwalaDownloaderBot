@@ -1,0 +1,33 @@
+DiskwalaDownloaderBot/
+│
+├── bot/
+│   ├── main.py
+│   ├── config.py
+│
+│   ├── handlers/
+│   │   ├── commands.py
+│   │   ├── messages.py
+│   │   ├── callbacks.py
+│
+│   ├── modules/
+│   │   ├── queue_manager.py
+│   │   ├── downloader.py
+│   │   ├── uploader.py
+│   │   ├── plans.py
+│   │   ├── extractor_router.py
+│   │
+│   │   └── extractors/
+│   │       ├── diskwala.py
+│   │       └── playwright_extractor.py
+│
+│   ├── utils/
+│   │   ├── ui.py
+│   │   ├── progress.py
+│   │   ├── helpers.py
+│
+├── downloads/
+├── logs/
+│
+├── requirements.txt
+├── .env.example
+├── README.md
